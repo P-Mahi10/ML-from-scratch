@@ -2,12 +2,12 @@
 #include<vector>
 #include <stdexcept>
 
-class matrix{
+class Matrix{
     public:
         int rows, columns;
         std::vector<float> data;
 
-        matrix(int r, int c);
+        Matrix(int r, int c);
 
         float& operator()(int i, int j);
         const float& operator()(int i, int j) const;

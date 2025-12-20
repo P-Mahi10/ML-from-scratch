@@ -1,7 +1,7 @@
 #pragma once
 #include "matrix.h"
 
-matrix add(const matrix& a, const matrix& b);
-matrix mul(const matrix& a, const matrix& b);
-matrix transpose(const matrix& a, const matrix& b);
+Matrix add(const Matrix& a, const Matrix& b);
+Matrix mul(const Matrix& a, const Matrix& b);
+Matrix transpose(const Matrix& a, const Matrix& b);
 

@@ -1,16 +1,17 @@
 #include "matrixOps.h"
 
-matrix add(const matrix& a, const matrix& b){
+//matrix addition
+Matrix add(const Matrix& a, const Matrix& b){
     //checking size
     if (a.rows != b.rows || a.columns != b.columns) {
         throw std::invalid_argument("Matrix dimensions must match for addition");
     }
 
     //addition process:
-    matrix c(a.rows, a.columns);
+    Matrix c(a.rows, a.columns);
 
-    for(int i = 0; i <= a.rows; i++){
-        for(int j = 0; j <= a.columns; j++){
+    for(int i = 0; i < a.rows; i++){
+        for(int j = 0; j < a.columns; j++){
             c(i, j) = a(i, j) + b(i, j);
         }
     }
@@ -18,11 +19,52 @@ matrix add(const matrix& a, const matrix& b){
     return c;
 }
 
-matrix mul(const matrix& a, const matrix& b){
-    if(a.columns != b.rows){
+//matrix muliplication
+Matrix mul(const Matrix& a, const Matrix& b) {
+    if (a.columns != b.rows) {
         throw std::invalid_argument("Matrix multiplication cannot take place");
     }
 
-    matrix c(a.columns, b.rows);
-    //yet to complete
+    Matrix c(a.rows, b.columns);
+
+    for (int i = 0; i < a.rows; i++) {
+        for (int j = 0; j < b.columns; j++) {
+            float sum = 0.0;
+            for (int k = 0; k < a.columns; k++) {
+                sum += a(i, k) * b(k, j);
+            }
+            c(i, j) = sum;
+        }
+    }
+
+    return c;
+}
+
+Matrix hadamard(const Matrix& a, const Matrix& b){
+    if (a.rows != b.rows || a.columns != b.columns) {
+        throw std::invalid_argument("Matrix dimensions must match for addition");
+    }
+
+    //addition process:
+    Matrix c(a.rows, a.columns);
+
+    for(int i = 0; i < a.rows; i++){
+        for(int j = 0; j < a.columns; j++){
+            c(i, j) = a(i, j) * b(i, j);
+        }
+    }
+
+    return c;
+}
+//transpose of a matrix
+Matrix transpose(const Matrix& a){
+    Matrix c(a.columns, a.rows);
+
+    for(int i = 0; i < a.rows; i++){
+        for(int j = 0; j < a.columns; j++){
+            c(j, i) = a(i, j);
+        }
+    }
+
+    return c;
 }
