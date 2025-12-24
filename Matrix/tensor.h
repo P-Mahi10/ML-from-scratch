@@ -11,8 +11,10 @@ class Tensor{
         float& operator()(int d, int i, int j);
         const float& operator()(int d, int i, int j) const;
         Tensor operator[](std::pair<int,int> drange) const;
+        Matrix operator[](int value) const;
 
         int getDim();
+        
         Matrix getM(int pos);
         Tensor slice(int start, int end);
 };

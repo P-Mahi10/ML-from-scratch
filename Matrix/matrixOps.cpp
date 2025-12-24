@@ -1,13 +1,10 @@
 #include "matrixOps.h"
 
-//matrix addition
 Matrix add(const Matrix& a, const Matrix& b){
-    //checking size
     if (a.rows != b.rows || a.columns != b.columns) {
         throw std::invalid_argument("Matrix dimensions must match for addition");
     }
 
-    //addition process:
     Matrix c(a.rows, a.columns);
 
     for(int i = 0; i < a.rows; i++){
@@ -19,7 +16,6 @@ Matrix add(const Matrix& a, const Matrix& b){
     return c;
 }
 
-//matrix muliplication
 Matrix mul(const Matrix& a, const Matrix& b) {
     if (a.columns != b.rows) {
         throw std::invalid_argument("Matrix multiplication cannot take place");
@@ -45,7 +41,6 @@ Matrix hadamard(const Matrix& a, const Matrix& b){
         throw std::invalid_argument("Matrix dimensions must match for addition");
     }
 
-    //addition process:
     Matrix c(a.rows, a.columns);
 
     for(int i = 0; i < a.rows; i++){
@@ -56,7 +51,7 @@ Matrix hadamard(const Matrix& a, const Matrix& b){
 
     return c;
 }
-//transpose of a matrix
+
 Matrix transpose(const Matrix& a){
     Matrix c(a.columns, a.rows);
 
