@@ -1,5 +1,5 @@
-#pragma once
-#include "tensor.h"
+#include "tensorOpps.h"
+#include "matrixOps.h"
 
 Tensor sum(Tensor A, Tensor B){
     if(A.getDim() != B.getDim() || A[0].columns != B[0].columns || A[0].rows != B[0].rows){
